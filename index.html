@@ -24,10 +24,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#process">How We Work</a></li>
-        <li><a href="contact.html" class="btn btn-primary">Get in Touch</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#markets">Markets</a></li>
+        <li><a href="#inquiries" class="btn btn-primary">Get in Touch</a></li>
       </ul>
     </nav>
   </header>
@@ -46,7 +46,7 @@
           focus on the work that matters. Big-city expertise with a neighborhood approach.
         </p>
         <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary">Request a Free Consultation
+          <a href="#inquiries" class="btn btn-primary">Request a Free Consultation
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <a href="#services" class="btn btn-ghost">Explore Services</a>
@@ -60,100 +60,289 @@
       <img class="skyline" src="assets/img/skyline.svg" alt="">
     </section>
 
-    <!-- ================= ABOUT / WHAT WE DO ================= -->
-    <section id="about" class="bg-alt">
-      <div class="container about-grid">
-        <div class="reveal">
-          <div class="eyebrow">What we do</div>
-          <h2>Your IT department, without the overhead.</h2>
-          <p>
-            [Replace with your story.] ElevareIT is an IT services company helping small and mid-sized
-            businesses across Chicagoland plan, secure and support their technology. Whether you need a
-            full outsourced IT team or backup for your in-house staff, we build systems that just work.
-          </p>
-          <ul class="about-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Proactive support that fixes problems before they cost you</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Plain-English advice with no jargon and no surprise invoices</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Local, on-site help when remote isn't enough</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Security-first approach built into everything we do</li>
-          </ul>
-        </div>
-        <div class="about-card reveal">
-          <blockquote>“[Mission statement or client testimonial goes here. Something short and confident about how you help businesses rise.]”</blockquote>
-          <cite>[Name], Founder, ElevareIT</cite>
-          <span class="placeholder-note">Placeholder: add your details</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= SERVICES ================= -->
-    <section id="services">
+    <!-- ================= MENU: four collapsible panels that open in one shared area ================= -->
+    <section class="explore" id="explore">
       <div class="container">
-        <div class="section-head center reveal">
-          <div class="eyebrow">Services</div>
-          <h2>Everything your business runs on, handled.</h2>
-          <p>[Edit this list to match what you offer.] Pick a single service or bundle them into a managed plan.</p>
+        <div class="menu-bar" role="group" aria-label="Explore ElevareIT">
+          <button class="menu-btn" type="button" data-panel="services" aria-expanded="false" aria-controls="panel-services">
+            <svg class="menu-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>
+            <span>Services</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <button class="menu-btn" type="button" data-panel="about" aria-expanded="false" aria-controls="panel-about">
+            <svg class="menu-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            <span>About</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <button class="menu-btn" type="button" data-panel="inquiries" aria-expanded="false" aria-controls="panel-inquiries">
+            <svg class="menu-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Inquiries</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <button class="menu-btn" type="button" data-panel="markets" aria-expanded="false" aria-controls="panel-markets">
+            <svg class="menu-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l5-3v16M10 21V3l9 4v14M14 9h2M14 13h2M14 17h2"/></svg>
+            <span>Markets Supported</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
-        <div class="services-grid">
-          <article class="service-card reveal">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-            <h3>Managed IT Support</h3>
-            <p>Help desk, device management and proactive monitoring for your whole team, for one predictable monthly price.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3>Cybersecurity</h3>
-            <p>Endpoint protection, email security, MFA rollout and staff training to keep threats outside your walls.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.3A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
-            <h3>Cloud &amp; Microsoft 365</h3>
-            <p>Migrations, licensing and administration for Microsoft 365, Google Workspace, Azure and more.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg></div>
-            <h3>Networking &amp; Wi-Fi</h3>
-            <p>Design, install and manage fast, secure networks, from a single office to multi-site buildings.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></div>
-            <h3>Backup &amp; Disaster Recovery</h3>
-            <p>Automated, tested backups and a recovery plan so an outage or ransomware attack never takes you down.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
-            <h3>IT Consulting &amp; Projects</h3>
-            <p>Office moves, technology roadmaps, vendor management and hardware procurement, planned and delivered.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <p class="menu-hint">Choose a topic above to learn more.</p>
 
-    <!-- ================= PROCESS ================= -->
-    <section id="process" class="bg-alt">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="eyebrow">How we work</div>
-          <h2>Built like a skyline: solid foundation first.</h2>
-        </div>
-        <div class="process">
-          <div class="step reveal"><h3>Assess</h3><p>We audit your current systems, security and pain points at no cost.</p></div>
-          <div class="step reveal"><h3>Plan</h3><p>You get a clear roadmap with priorities, timelines and transparent pricing.</p></div>
-          <div class="step reveal"><h3>Build</h3><p>We implement, migrate and secure with minimal disruption to your team.</p></div>
-          <div class="step reveal"><h3>Support</h3><p>Ongoing monitoring, help desk and quarterly reviews keep you ahead.</p></div>
+        <div class="menu-panels">
+          <div class="menu-panels-inner">
+
+            <!-- SERVICES -->
+            <div class="panel" id="panel-services" role="region" aria-label="Services" hidden>
+              <div class="section-head center">
+                <div class="eyebrow">Services</div>
+                <h2>Everything your business runs on, handled.</h2>
+                <p>[Edit this list to match what you offer.] Pick a single service or bundle them into a managed plan.</p>
+              </div>
+              <div class="services-grid">
+                <article class="service-card">
+                  <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+                  <h3>Managed IT Support</h3>
+                  <p>Help desk, device management and proactive monitoring for your whole team, for one predictable monthly price.</p>
+                </article>
+                <article class="service-card">
+                  <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                  <h3>Cybersecurity</h3>
+                  <p>Endpoint protection, email security, MFA rollout and staff training to keep threats outside your walls.</p>
+                </article>
+                <article class="service-card">
+                  <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.3A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+                  <h3>Cloud &amp; Microsoft 365</h3>
+                  <p>Migrations, licensing and administration for Microsoft 365, Google Workspace, Azure and more.</p>
+                </article>
+                <article class="service-card">
+                  <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg></div>
+                  <h3>Networking &amp; Wi-Fi</h3>
+                  <p>Design, install and manage fast, secure networks, from a single office to multi-site buildings.</p>
+                </article>
+                <article class="service-card">
+                  <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></div>
+                  <h3>Backup &amp; Disaster Recovery</h3>
+                  <p>Automated, tested backups and a recovery plan so an outage or ransomware attack never takes you down.</p>
+                </article>
+                <article class="service-card">
+                  <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+                  <h3>IT Consulting &amp; Projects</h3>
+                  <p>Office moves, technology roadmaps, vendor management and hardware procurement, planned and delivered.</p>
+                </article>
+              </div>
+            </div>
+
+            <!-- ABOUT -->
+            <div class="panel" id="panel-about" role="region" aria-label="About" hidden>
+                  <div class="about-grid">
+                    <div>
+                      <div class="eyebrow">What we do</div>
+                      <h2>Your IT department, without the overhead.</h2>
+                      <p>
+                        [Replace with your story.] ElevareIT is an IT services company helping small and mid-sized
+                        businesses across Chicagoland plan, secure and support their technology. Whether you need a
+                        full outsourced IT team or backup for your in-house staff, we build systems that just work.
+                      </p>
+                      <ul class="about-list">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Proactive support that fixes problems before they cost you</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Plain-English advice with no jargon and no surprise invoices</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Local, on-site help when remote isn't enough</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Security-first approach built into everything we do</li>
+                      </ul>
+                    </div>
+                    <div class="about-card">
+                      <blockquote>“[Mission statement or client testimonial goes here. Something short and confident about how you help businesses rise.]”</blockquote>
+                      <cite>[Name], Founder, ElevareIT</cite>
+                      <span class="placeholder-note">Placeholder: add your details</span>
+                    </div>
+                  </div>
+              <div class="section-head" style="margin:4rem 0 2rem">
+                <div class="eyebrow">How we work</div>
+                <h2>Built like a skyline: solid foundation first.</h2>
+              </div>
+                      <div class="process">
+                        <div class="step"><h3>Assess</h3><p>We audit your current systems, security and pain points at no cost.</p></div>
+                        <div class="step"><h3>Plan</h3><p>You get a clear roadmap with priorities, timelines and transparent pricing.</p></div>
+                        <div class="step"><h3>Build</h3><p>We implement, migrate and secure with minimal disruption to your team.</p></div>
+                        <div class="step"><h3>Support</h3><p>Ongoing monitoring, help desk and quarterly reviews keep you ahead.</p></div>
+                      </div>
+            </div>
+
+            <!-- INQUIRIES -->
+            <div class="panel" id="panel-inquiries" role="region" aria-label="Inquiries" hidden>
+              <div class="section-head">
+                <div class="eyebrow">Inquiries</div>
+                <h2>Let's talk about your IT.</h2>
+                <p>Fill out the form and a real person from our team will reach out within one business day.</p>
+              </div>
+              <div class="contact-grid">
+                <aside class="contact-info">
+                  <h2 style="font-size:1.5rem">Get in touch</h2>
+                  <p>Prefer to reach us directly? We're happy to help.</p>
+                  <ul>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                      <div><strong>Email</strong><span><a href="mailto:info@example.com">[info@yourdomain.com]</a></span></div>
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+                      <div><strong>Phone</strong><span><a href="tel:+13125550100">[(312) 555-0100]</a></span></div>
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <div><strong>Service area</strong><span>Chicago &amp; surrounding suburbs</span></div>
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                      <div><strong>Hours</strong><span>[Mon–Fri, 8am–6pm CT]<br>24/7 emergency support for clients</span></div>
+                    </li>
+                  </ul>
+                </aside>
+
+                <!--
+                  EMAIL DELIVERY: this form posts to Formspree, which emails each submission to you.
+                  1. Create a free form at https://formspree.io using the address you want submissions sent to.
+                  2. Replace YOUR_FORM_ID below with the ID Formspree gives you (e.g. "xyzabcd").
+                  See README.md for alternatives.
+                -->
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                  <input type="hidden" name="_subject" value="New website inquiry - ElevareIT">
+                  <div class="form-row">
+                    <div class="field">
+                      <label for="name">Full name <span class="req">*</span></label>
+                      <input id="name" name="name" type="text" autocomplete="name" required>
+                    </div>
+                    <div class="field">
+                      <label for="company">Company</label>
+                      <input id="company" name="company" type="text" autocomplete="organization">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="field">
+                      <label for="email">Email <span class="req">*</span></label>
+                      <input id="email" name="email" type="email" autocomplete="email" required>
+                    </div>
+                    <div class="field">
+                      <label for="phone">Phone</label>
+                      <input id="phone" name="phone" type="tel" autocomplete="tel">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="field">
+                      <label for="service">Service of interest</label>
+                      <select id="service" name="service">
+                        <option value="">Select one…</option>
+                        <option>Managed IT Support</option>
+                        <option>Cybersecurity</option>
+                        <option>Cloud &amp; Microsoft 365</option>
+                        <option>Networking &amp; Wi-Fi</option>
+                        <option>Backup &amp; Disaster Recovery</option>
+                        <option>IT Consulting &amp; Projects</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="size">Company size</label>
+                      <select id="size" name="company_size">
+                        <option value="">Select one…</option>
+                        <option>1–10 employees</option>
+                        <option>11–50 employees</option>
+                        <option>51–200 employees</option>
+                        <option>200+ employees</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="message">How can we help? <span class="req">*</span></label>
+                    <textarea id="message" name="message" required placeholder="Tell us a bit about your current setup and what you need…"></textarea>
+                  </div>
+                  <div class="hp" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                  <div class="form-status" role="status" aria-live="polite"></div>
+                </form>
+              </div>
+            </div>
+
+            <!-- MARKETS SUPPORTED -->
+            <div class="panel" id="panel-markets" role="region" aria-label="Markets Supported" hidden>
+              <div class="section-head">
+                <div class="eyebrow">Markets supported</div>
+                <h2>The industries and neighborhoods we keep running.</h2>
+                <p>[Edit these to match your clients.] If your business has people, devices and data, we can help.</p>
+              </div>
+              <div class="markets-grid">
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-4.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 6.5-8 11-8 11z"/></svg></div>
+                <h3>Healthcare &amp; Dental</h3>
+                <p>HIPAA-minded IT for clinics, practices and labs.</p>
+              </div>
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0zM8 21h8"/></svg></div>
+                <h3>Legal &amp; Professional</h3>
+                <p>Secure document access and uptime for firms that bill by the hour.</p>
+              </div>
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg></div>
+                <h3>Finance &amp; Accounting</h3>
+                <p>Compliance-ready security for CPAs, advisors and lenders.</p>
+              </div>
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v10H3zM9 21v-6h6v6"/></svg></div>
+                <h3>Real Estate &amp; Property</h3>
+                <p>Connected offices, buildings and teams always on the move.</p>
+              </div>
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20v-4a8 8 0 0 1 16 0v4M12 8V4M9 8V5M15 8V5"/></svg></div>
+                <h3>Construction &amp; Trades</h3>
+                <p>Rugged devices, job-site connectivity and field apps.</p>
+              </div>
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20V9l6 4V9l6 4V5h8v15z"/></svg></div>
+                <h3>Manufacturing &amp; Logistics</h3>
+                <p>Reliable networks for floors, warehouses and fleets.</p>
+              </div>
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2 9 2 12 0v-5"/></svg></div>
+                <h3>Nonprofits &amp; Education</h3>
+                <p>Budget-friendly tech that stretches every dollar.</p>
+              </div>
+              <div class="market-card">
+                <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l2-5h14l2 5M3 9v11h18V9M3 9h18M9 20v-6h6v6"/></svg></div>
+                <h3>Retail &amp; Hospitality</h3>
+                <p>POS, guest Wi-Fi and cameras that just keep running.</p>
+              </div>
+              </div>
+              <div class="areas">
+                <div>
+                  <h3>Areas we serve</h3>
+                  <p>On-site support across the city and suburbs, with remote help anywhere.</p>
+                </div>
+                <ul class="about-list areas-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Chicago Loop &amp; River North</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>West Loop &amp; Fulton Market</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>North Side neighborhoods</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>South Side neighborhoods</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>North Shore &amp; Evanston</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Oak Brook &amp; Western Suburbs</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Schaumburg &amp; NW Suburbs</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Naperville &amp; SW Suburbs</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ================= CTA ================= -->
-    <section>
+    <section class="cta-section">
       <div class="container">
         <div class="cta-band reveal">
           <div>
             <h2>Ready to elevate your IT?</h2>
             <p>Tell us about your business and we'll reach out within one business day.</p>
           </div>
-          <a href="contact.html" class="btn">Contact Us</a>
+          <a href="#inquiries" class="btn">Make an Inquiry</a>
         </div>
       </div>
     </section>
@@ -170,9 +359,10 @@
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#markets">Markets Supported</a></li>
+            <li><a href="#inquiries">Inquiries</a></li>
           </ul>
         </div>
         <div>

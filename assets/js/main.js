@@ -12,6 +12,48 @@ if (toggle && links) {
   }));
 }
 
+// Collapsible menu: one button open at a time, all sharing one panel area.
+// Click a button to open its panel; click it again to close; click another to switch.
+// Links like href="#services" anywhere on the page open that panel too.
+const explore = document.querySelector('#explore');
+if (explore) {
+  const buttons = [...explore.querySelectorAll('.menu-btn')];
+  const panelsWrap = explore.querySelector('.menu-panels');
+  const names = buttons.map(b => b.dataset.panel);
+  let current = null;
+
+  const headerHeight = () => document.querySelector('.site-header').offsetHeight;
+  const scrollToMenu = () => {
+    const y = explore.getBoundingClientRect().top + window.scrollY - headerHeight();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  };
+
+  const open = (name, { scroll = false } = {}) => {
+    current = name;
+    buttons.forEach(b => b.setAttribute('aria-expanded', String(b.dataset.panel === name)));
+    names.forEach(n => { document.getElementById(`panel-${n}`).hidden = n !== name; });
+    panelsWrap.classList.toggle('open', !!name);
+    explore.classList.toggle('has-open', !!name);
+    history.replaceState(null, '', name ? `#${name}` : location.pathname + location.search);
+    // Line the menu bar up at the top of the screen so the buttons and the new panel are both in view.
+    if (name && (scroll || Math.abs(explore.getBoundingClientRect().top - headerHeight()) > 4)) scrollToMenu();
+  };
+
+  buttons.forEach(b => b.addEventListener('click', () => {
+    open(current === b.dataset.panel ? null : b.dataset.panel);
+  }));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    const name = a.getAttribute('href').slice(1);
+    if (!names.includes(name)) return;
+    a.addEventListener('click', e => { e.preventDefault(); open(name, { scroll: true }); });
+  });
+
+  const fromHash = location.hash.slice(1);
+  if (names.includes(fromHash)) open(fromHash, { scroll: true });
+}
+
 // Reveal-on-scroll animation
 const revealEls = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
@@ -45,7 +87,7 @@ if (form) {
     if (form.querySelector('.hp input').value) return; // bot filled the honeypot
 
     if (form.action.includes('YOUR_FORM_ID')) {
-      show('error', 'Form not connected yet: replace YOUR_FORM_ID in contact.html with your Formspree form ID (see README).');
+      show('error', 'Form not connected yet: replace YOUR_FORM_ID in index.html with your Formspree form ID (see README).');
       return;
     }
 
