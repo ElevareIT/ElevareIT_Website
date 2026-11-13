@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <style>
+    .beacon { animation: blink 2.4s ease-in-out infinite; }
+    .beacon:nth-child(2) { animation-delay: .8s; }
+    .beacon:nth-child(3) { animation-delay: 1.6s; }
+    @keyframes blink { 0%, 100% { opacity: .15; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .beacon { animation: none; } }
+  </style>
+  <defs>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12305a"/>
+      <stop offset="1" stop-color="#0c2040"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d2140"/>
+      <stop offset="1" stop-color="#081629"/>
+    </linearGradient>
+  </defs>
+  <!-- Far skyline layer -->
+  <path fill="url(#far)" d="M0 320V210h40v-30h30v40h35v-70h25v70h30v-45h40v55h20v-90h18v-20h14v20h18v90h30v-60h45v80h25v-110h30v110h40v-50h30v-30h20v30h20v70h35v-95h40v95h30v-40h25v-60h30v100h40v-75h35v95h30v-130h12v-25h16v25h12v130h40v-55h35v75h25v-90h40v90h30v-40h45v60h30v-80h30v80h25v-105h35v105h40v-50h30v70h35v-60h40v50h40v-70h30v90H1440v110z"/>
+  <!-- Near skyline layer: stepped supertall, antenna tower, river-side blocks -->
+  <path fill="url(#near)" d="M0 320V250h55v-40h45v60h30v-90h50v110h25v-55h35v-40h40v95h30V160h20v-20h22v-20h22v20h20v20h20v110h28v-60h50v80h30v-35h40v-80h12V80h6v-30h4v30h6v40h12v20h20v120h30v-50h45v-30h40v80h25V150h30v-15h20v15h30v115h40v-45h55v65h30v-100h20V90h16v-25h20v-25h4V20h4v20h4v25h20v25h16v40h20v-18h6V50h3v42h6v18h20v150h35v-70h45v90h30v-115h50v115h40v-60h35v-25h30v85h30v-55h45v75h35v-40h40v50h40v-30h45v40V320z"/>
+  <!-- Window lights -->
+  <g fill="#7cc4ff" opacity="0.55">
+    <rect x="352" y="170" width="4" height="6"/><rect x="364" y="190" width="4" height="6"/><rect x="376" y="210" width="4" height="6"/>
+    <rect x="352" y="230" width="4" height="6"/><rect x="584" y="160" width="4" height="6"/><rect x="596" y="200" width="4" height="6"/>
+    <rect x="590" y="240" width="4" height="6"/><rect x="752" y="170" width="4" height="6"/><rect x="764" y="210" width="4" height="6"/>
+    <rect x="940" y="140" width="4" height="6"/><rect x="952" y="180" width="4" height="6"/><rect x="964" y="220" width="4" height="6"/>
+    <rect x="940" y="250" width="4" height="6"/><rect x="1086" y="160" width="4" height="6"/><rect x="1098" y="200" width="4" height="6"/>
+    <rect x="1086" y="240" width="4" height="6"/><rect x="1254" y="230" width="4" height="6"/><rect x="200" y="200" width="4" height="6"/>
+  </g>
+  <!-- Antenna beacons -->
+  <g fill="#ff5a5a">
+    <circle class="beacon" cx="579" cy="78" r="3"/>
+    <circle class="beacon" cx="1002" cy="18" r="3"/>
+    <circle class="beacon" cx="1035" cy="48" r="3"/>
+  </g>
+</svg>
