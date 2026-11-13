@@ -1,0 +1,10 @@
+{
+  "name": "elevare-it-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A self-contained Elevare IT website with an interactive IT review brief.",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "check": "node --check dist/app.js && node --check dist/review.js && node --check scripts/serve.mjs"
+  }
+}

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1100" viewBox="0 0 1400 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Chicago, looking ahead</title><desc id="desc">An original architectural illustration of the Chicago skyline and river in soft evening light, with tiered towers, waterfront buildings, bridges, and reflections.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#7faaa9"/><stop offset=".52" stop-color="#c3cfc0"/><stop offset="1" stop-color="#e8cbb0"/></linearGradient>
+    <linearGradient id="river" x2=".65" y2="1"><stop stop-color="#537f7f"/><stop offset="1" stop-color="#143b49"/></linearGradient>
+    <linearGradient id="steel" x2="1" y2="0"><stop stop-color="#385960"/><stop offset=".55" stop-color="#52747a"/><stop offset="1" stop-color="#2e4d57"/></linearGradient>
+    <linearGradient id="stone" x2="1" y2="0"><stop stop-color="#7c8c82"/><stop offset=".6" stop-color="#b2b5a0"/><stop offset="1" stop-color="#647c77"/></linearGradient>
+    <linearGradient id="glass" x2="1" y2="1"><stop stop-color="#5e8790"/><stop offset=".5" stop-color="#a0b7b0"/><stop offset="1" stop-color="#496c77"/></linearGradient>
+    <linearGradient id="fade" x2="0" y2="1"><stop stop-color="#f2ce9c" stop-opacity=".65"/><stop offset="1" stop-color="#9fc5b8" stop-opacity="0"/></linearGradient>
+    <pattern id="windows" width="19" height="24" patternUnits="userSpaceOnUse"><rect x="6" y="7" width="5" height="12" fill="#acc5bc" opacity=".45"/></pattern>
+    <pattern id="fineWindows" width="16" height="19" patternUnits="userSpaceOnUse"><rect x="5" y="4" width="5" height="9" fill="#254852" opacity=".75"/><rect x="6" y="5" width="2" height="4" fill="#e3d0a2" opacity=".6"/></pattern>
+    <pattern id="floors" width="48" height="17" patternUnits="userSpaceOnUse"><path d="M0 3h48M7 3v14M25 3v14M43 3v14" fill="none" stroke="#d5ddd0" stroke-opacity=".4" stroke-width="2"/></pattern>
+    <filter id="haze"><feGaussianBlur stdDeviation="17"/></filter>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1400v1100H0z"/>
+  <circle cx="993" cy="289" r="123" fill="#ead6b3" opacity=".62"/>
+  <path d="M0 442c260-100 390 90 630-2s350-44 770-18" stroke="#e8e4cc" stroke-width="72" opacity=".2" filter="url(#haze)"/>
+  <g fill="#809d98" opacity=".7"><path d="M0 540h65V411h70v129h48V365h65v175h72V446h67v94h74V390h46v150h66V305h47v235h82V432h75v108h75V364h52v176h67V410h70v130h72V336h38v204h75V394h71v146h92V427h63v113h90v160H0Z"/></g>
+  <g fill="#678a88" opacity=".8"><path d="M0 600h110V388h81v212h60V497h69v103h98V421h90v179h51V391h82v209h78V465h92v135h66V350h97v250h87V458h88v142h89V410h75v190h68V480h85v120h66V420h69v250H0Z"/></g>
+  <!-- Tiered Chicago tower, with original proportions and detailing. -->
+  <g><path fill="#294954" d="M189 714V277h35V157h57V86h55v86h42v117h30v425Z"/><path fill="#42626b" d="M224 277V157h57v557h-57Z"/><path fill="#54747a" d="M281 86h28v628h-28Z"/><path fill="#1f414e" d="M336 172h42v542h-42Z"/><path fill="url(#windows)" d="M189 277h219v437H189Zm35-120h57v120h-57Zm57-71h55v191h-55Z"/><path d="M290 86V16m30 70V33" stroke="#2c4b55" stroke-width="5"/><path d="M224 157h57m55 15h42M189 277h35m154 12h30" stroke="#b8c9bd" stroke-opacity=".5" stroke-width="3"/></g>
+  <!-- Glass facades catch the warm sky. -->
+  <g><path fill="url(#glass)" d="M431 344h129v390H431Z"/><path fill="url(#floors)" d="M431 344h129v390H431Z"/><path fill="#32565f" d="m560 344 32 20v370h-32Z"/><path d="M438 344v390m37-390v390m40-390v390m38-390v390" stroke="#d5ddd0" stroke-opacity=".35" stroke-width="3"/></g>
+  <g><path fill="url(#steel)" d="M600 252h104v482H600Z"/><path fill="url(#windows)" d="M600 252h104v482H600Z"/><path fill="#214754" d="m704 252 28 23v459h-28Z"/><path stroke="#b6c8ba" stroke-opacity=".4" d="M605 251h99v483" stroke-width="3"/></g>
+  <!-- Rounded riverfront balconies. -->
+  <g fill="#84998e" stroke="#4b706f" stroke-width="6"><path d="M764 370q39-25 78 0v350h-78Z"/><path d="M864 394q39-25 78 0v326h-78Z"/></g>
+  <g fill="none" stroke="#d5d3b8" stroke-width="6" opacity=".8"><path d="M766 387q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0"/><path d="M866 411q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0m-74 20q37 18 74 0"/></g>
+  <g><path fill="url(#stone)" d="M980 413h144v320H980Z"/><path fill="url(#fineWindows)" d="M980 413h144v320H980Z"/><path fill="#526e69" d="M998 383h108v30H998Z"/><path fill="#a8b09a" d="M1035 280h39v103h-39Z"/><path fill="#6f8b7e" d="m1029 280 25-51 26 51Z"/><path stroke="#adc1aa" stroke-width="3" d="M1054 231v-28"/><circle cx="1054" cy="312" r="13" fill="#e4d9b7"/><path d="M1054 303v10l7 4" stroke="#5c776c" stroke-width="2"/><path d="M987 420h130M987 435h130" stroke="#d1d0b4" stroke-width="3"/></g>
+  <g><path fill="url(#steel)" d="M1160 190h158v551h-158Z"/><path fill="url(#floors)" d="M1160 190h158v551h-158Z"/><path fill="#1e4651" d="m1318 190 82 45v506h-82Z"/><path d="M1172 190v551m40-551v551m44-551v551m44-551v551" stroke="#c9d4bd" stroke-opacity=".38" stroke-width="3"/></g>
+  <!-- Riverbanks and the river carry the city into the foreground. -->
+  <path fill="#264b51" d="M0 680h1400v420H0Z"/>
+  <path fill="url(#river)" d="m582 716 378-3 440 387H43Z"/>
+  <path fill="#56756e" d="M0 701h572L44 1100H0Z"/><path fill="#71887b" d="m0 728 535 1-83 52H0Z"/>
+  <path fill="#7f9380" d="m979 712 421 11v57h-347Z"/><path fill="#2d4d4c" d="m1053 780 347 8v312Z"/>
+  <path fill="#bdc2a4" d="m962 705 438 4v14H979Z"/><path fill="#a4b298" d="m0 694 595 3-23 15H0Z"/>
+  <g opacity=".3" fill="url(#fade)"><path d="m650 743 31 0-59 304-63 0Z"/><path d="m843 752 40 0 93 326-81 0Z"/><path d="m1000 775 22 0 126 303h-54Z"/><path d="m763 734 35 0 12 338h-78Z"/></g>
+  <g fill="none" stroke="#acc6af" stroke-opacity=".28"><path d="M534 817h430m-500 44h590m-660 61h720m-785 74h910m-1020 66h1190"/><path d="M621 771h237m-210 16h260m-440 106h86m207 51h148m-290 83h79" stroke-width="3"/></g>
+  <!-- A low bridge, structural details, riverwalk trees and lights. -->
+  <path d="M390 788h680v19H367Z" fill="#203e46"/><path d="m400 788 37-48h570l48 48" fill="none" stroke="#294d50" stroke-width="9"/><path d="m436 742 58 46 58-46 58 46 58-46 58 46 58-46 58 46 58-46 58 46 48-46" fill="none" stroke="#456b65" stroke-width="5"/>
+  <path d="M444 807v75m550-75v75" stroke="#294d50" stroke-width="19"/>
+  <g fill="#2b594e"><ellipse cx="112" cy="689" rx="27" ry="36"/><ellipse cx="184" cy="689" rx="26" ry="40"/><ellipse cx="262" cy="690" rx="25" ry="34"/><ellipse cx="335" cy="690" rx="23" ry="34"/><ellipse cx="1169" cy="703" rx="27" ry="34"/><ellipse cx="1261" cy="705" rx="27" ry="39"/><ellipse cx="1355" cy="709" rx="30" ry="40"/></g>
+  <g stroke="#a7b79a" stroke-width="2" fill="#e6ce98"><path d="M60 718v-68m305 68v-67m751 79v-67m179 69v-67"/><circle cx="60" cy="648" r="4"/><circle cx="365" cy="650" r="4"/><circle cx="1116" cy="662" r="4"/><circle cx="1295" cy="664" r="4"/></g>
+  <path d="m793 898 48 4 20 11-17 9-50-4-16-13Z" fill="#d3d6ba"/><path d="m803 891 28 2 10 9-48-4Z" fill="#839e98"/>
+</svg>
