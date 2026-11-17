@@ -1,55 +1,58 @@
-# ElevareIT Website
+# Elevare IT Website
 
-A static marketing site for ElevareIT: a bright summer-in-Chicago theme with a daytime skyline over the lake,
-and a menu of four buttons (Services, About, Inquiries, Markets Supported). Each button expands its
-content in one shared area below the menu, so visitors can switch topics without scrolling. Inquiries holds a
-contact form that emails you.
+A static, single-page site for Elevare IT built from the approved mockup: navy / Chicago-at-dusk look,
+serif headlines, and these sections:
+
+1. **Hero**: "Enterprise-Level IT for Growing Businesses", skyline photo, consultation and call buttons
+2. **Our Services**: a collapsible block. Visitors see the heading "Real Solutions for Real Business Needs."
+   in a bordered bar; clicking it expands the six services below it. Each service's **Learn more** opens a
+   details box under the row (one at a time) instead of going to another page.
+3. **Industries We Serve**: cream band with six industries
+4. **Why Elevare IT**: lobby photo, checklist, founder quote and signature
+5. **Contact**: CTA, QR code, phone / email / location. **Book Your Free Consultation** expands the
+   consultation form in place. Every "Book a consultation" / "Schedule a free IT review" button opens it too.
 
 No build step. It's plain HTML, CSS and JavaScript, so it can be hosted anywhere (GitHub Pages, Netlify, Cloudflare Pages, any web host).
 
 ```
-index.html            The whole site: hero, the 4-button menu and its panels, CTA, footer
-assets/css/styles.css All styling (colors are variables at the top)
-assets/js/main.js     Collapsible menu, mobile nav, scroll animations, form submission
-assets/img/           Skyline illustration + logo/favicon (SVG)
+index.html            The whole site
+assets/css/styles.css All styling (colors and fonts are variables at the top)
+assets/js/main.js     Expand/collapse, "Learn more" details, header, mobile menu, form submission
+assets/img/           hero-city.jpg, lobby.jpg, cta-city.jpg (photos), qr-site.svg, favicon.svg
 ```
 
 ## Preview locally
 
 Open `index.html` in a browser, or run `python3 -m http.server` in this folder and visit http://localhost:8000.
 
-## Make the contact form email you
+## Make the consultation form email you
 
 The form uses [Formspree](https://formspree.io) (free tier: 50 submissions/month), which works on any static host.
 
-1. Sign up at formspree.io with the email address that should receive inquiries.
+1. Sign up at formspree.io with the email address that should receive requests (e.g. hello@elevareit.net).
 2. Create a new form. Formspree gives you an endpoint like `https://formspree.io/f/xyzabcd`.
 3. In `index.html`, replace `YOUR_FORM_ID` in the form's `action` with your ID (`xyzabcd`).
 4. Submit the form once and confirm the verification email from Formspree.
 
 Until step 3 is done, the form shows a "not connected yet" notice instead of sending.
 
-**Alternatives:** if you host on Netlify, you can use Netlify Forms instead (add `data-netlify="true"` to the `<form>` and remove the `action`).
-Other drop-in services include Web3Forms and Basin. Each one only requires changing the form's `action` URL.
+## Photos
 
-## Filling in your details
+The three photos were cut from the mockup image, so they are lower resolution than ideal. For a sharper site,
+replace them with the original full-size images, keeping the same file names:
 
-Search the HTML files for `[` brackets. Every placeholder is wrapped like `[Your tagline here]`:
+- `assets/img/hero-city.jpg`: skyline / laptop / mug scene (right side of the hero)
+- `assets/img/lobby.jpg`: lobby with the ELEVARE IT sign
+- `assets/img/cta-city.jpg`: dark city background behind the contact section
 
-- Hero tagline and stats (`[XX]+` clients, `[<1hr]` response time)
-- About paragraph and the mission/testimonial card (remove the yellow "Placeholder" tag when done)
-- Email and phone in the footer and in the Inquiries panel (update both the visible text **and** the `mailto:` / `tel:` links)
-- Business hours in the Inquiries panel
-- Services: edit, add or remove `<article class="service-card">` blocks in the `panel-services` section, and keep
-  the "Service of interest" dropdown in the Inquiries form in sync
-- Markets Supported: edit the industry cards (`market-card`) and the "Areas we serve" list in `panel-markets`
+## Things to fill in
 
-## The menu
+- **Learn more details**: each service's details box (`detail-...` in `index.html`) has starter text marked `[Edit]`
+- **Social links**: the four icons in the contact section point to `#`; add your LinkedIn, Facebook, Instagram and Google profile URLs
+- **QR code**: `assets/img/qr-site.svg` points to https://elevareit.net. If your domain is different, regenerate it
+- Keep the "Service of interest" dropdown in the form in sync with the six services
 
-Each menu button has `data-panel="name"` and opens the matching `<div class="panel" id="panel-name">`.
-To add a fifth menu, copy one button and one panel and give them a new name. Any link to `#name`
-(for example `href="#inquiries"`) opens that panel, so you can link straight to a menu from anywhere.
+## Changing colors and fonts
 
-## Changing colors
-
-All colors are CSS variables at the top of `assets/css/styles.css` (`--blue-500`, `--sky-300`, `--navy-*`, etc.).
+All colors are CSS variables at the top of `assets/css/styles.css`. Fonts: DM Serif Display (headlines),
+Jost (text), Caveat ("Scan to visit our site") and Mrs Saint Delafield (signature), loaded from Google Fonts.

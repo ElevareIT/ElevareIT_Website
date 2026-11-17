@@ -1,85 +1,124 @@
-// Mobile navigation toggle
-const toggle = document.querySelector('.nav-toggle');
-const links = document.querySelector('.nav-links');
-if (toggle && links) {
-  toggle.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }));
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const header = document.querySelector('.site-header');
+
+// Header turns solid once the page scrolls
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// Mobile navigation
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+navToggle.addEventListener('click', () => {
+  const open = navMenu.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(open));
+});
+const closeNav = () => { navMenu.classList.remove('open'); navToggle.setAttribute('aria-expanded', 'false'); };
+
+// Smooth scroll that accounts for the fixed header
+const scrollToEl = (el) => {
+  const y = el.getBoundingClientRect().top + window.scrollY - header.offsetHeight + 1;
+  window.scrollTo({ top: Math.max(0, y), behavior: reduceMotion ? 'auto' : 'smooth' });
+};
+
+// ---------- Collapsible sections ----------
+// A toggle button has aria-controls="<id of .collapse-body>".
+function setCollapse(body, open) {
+  body.classList.toggle('open', open);
+  document.querySelectorAll(`[aria-controls="${body.id}"]`).forEach(t => t.setAttribute('aria-expanded', String(open)));
 }
+const isOpen = (body) => body.classList.contains('open');
 
-// Collapsible menu: one button open at a time, all sharing one panel area.
-// Click a button to open its panel; click it again to close; click another to switch.
-// Links like href="#services" anywhere on the page open that panel too.
-const explore = document.querySelector('#explore');
-if (explore) {
-  const buttons = [...explore.querySelectorAll('.menu-btn')];
-  const panelsWrap = explore.querySelector('.menu-panels');
-  const names = buttons.map(b => b.dataset.panel);
-  let current = null;
-
-  const headerHeight = () => document.querySelector('.site-header').offsetHeight;
-  const scrollToMenu = () => {
-    const y = explore.getBoundingClientRect().top + window.scrollY - headerHeight();
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
-  };
-
-  const open = (name, { scroll = false } = {}) => {
-    current = name;
-    buttons.forEach(b => b.setAttribute('aria-expanded', String(b.dataset.panel === name)));
-    names.forEach(n => { document.getElementById(`panel-${n}`).hidden = n !== name; });
-    panelsWrap.classList.toggle('open', !!name);
-    explore.classList.toggle('has-open', !!name);
-    history.replaceState(null, '', name ? `#${name}` : location.pathname + location.search);
-    // Line the menu bar up at the top of the screen so the buttons and the new panel are both in view.
-    if (name && (scroll || Math.abs(explore.getBoundingClientRect().top - headerHeight()) > 4)) scrollToMenu();
-  };
-
-  buttons.forEach(b => b.addEventListener('click', () => {
-    open(current === b.dataset.panel ? null : b.dataset.panel);
-  }));
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    const name = a.getAttribute('href').slice(1);
-    if (!names.includes(name)) return;
-    a.addEventListener('click', e => { e.preventDefault(); open(name, { scroll: true }); });
+document.querySelectorAll('.collapse-head, [data-toggle-form]').forEach(btn => {
+  const body = document.getElementById(btn.getAttribute('aria-controls'));
+  btn.addEventListener('click', () => {
+    setCollapse(body, !isOpen(body));
+    if (body.id === 'form-panel' && isOpen(body)) {
+      setTimeout(() => body.querySelector('input:not([type=hidden])').focus({ preventScroll: true }), 350);
+    }
   });
+});
 
-  const fromHash = location.hash.slice(1);
-  if (names.includes(fromHash)) open(fromHash, { scroll: true });
-}
+// Links with data-opens="<collapse id>" open that section, then scroll to it
+document.querySelectorAll('a[data-opens]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const body = document.getElementById(link.dataset.opens);
+    if (!body) return;
+    e.preventDefault();
+    closeNav();
+    setCollapse(body, true);
+    const target = body.id === 'form-panel' ? document.getElementById('contact') : body.closest('section');
+    scrollToEl(target);
+    history.replaceState(null, '', link.getAttribute('href'));
+  });
+});
 
-// Reveal-on-scroll animation
-const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+// Other in-page links: scroll below the fixed header and close the mobile menu
+document.querySelectorAll('a[href^="#"]:not([data-opens])').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const id = link.getAttribute('href').slice(1);
+    const target = id === 'top' ? document.body : document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    closeNav();
+    if (id === 'top') window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    else scrollToEl(target);
+  });
+});
+
+// Opening the page at #services or #contact opens that section
+if (location.hash === '#services') setCollapse(document.getElementById('services-panel'), true);
+
+// ---------- "Learn more" on each service: details open below the row ----------
+const detailsArea = document.querySelector('.service-details');
+const learnButtons = [...document.querySelectorAll('.learn-more')];
+learnButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+    learnButtons.forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.closest('.service').classList.remove('active');
+      document.getElementById(b.getAttribute('aria-controls')).hidden = true;
     });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => io.observe(el));
-} else {
-  revealEls.forEach(el => el.classList.add('visible'));
-}
+    if (!wasOpen) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.closest('.service').classList.add('active');
+      const detail = document.getElementById(btn.getAttribute('aria-controls'));
+      detail.hidden = false;
+      // Bring the details into view if they open below the bottom of the screen
+      requestAnimationFrame(() => {
+        const r = detail.getBoundingClientRect();
+        if (r.bottom > window.innerHeight) {
+          window.scrollBy({ top: Math.min(r.bottom - window.innerHeight + 24, r.top - header.offsetHeight - 16), behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      });
+    }
+    detailsArea.classList.toggle('has-open', !wasOpen);
+  });
+});
+
+// Highlight the nav link for the section in view
+const navLinks = [...document.querySelectorAll('.nav-links a')];
+const sections = ['top', 'services', 'industries', 'about', 'contact'].map(id => id === 'top' ? document.querySelector('.hero') : document.getElementById(id));
+const markActive = () => {
+  const y = window.scrollY + header.offsetHeight + 120;
+  let idx = 0;
+  sections.forEach((s, i) => { if (s.offsetTop <= y) idx = i; });
+  if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) idx = sections.length - 1;
+  navLinks.forEach((a, i) => a.classList.toggle('active', i === idx));
+};
+markActive();
+window.addEventListener('scroll', markActive, { passive: true });
 
 // Footer year
 document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
-// Contact form -> email (via Formspree; see README for setup)
+// ---------- Consultation form -> email (via Formspree; see README) ----------
 const form = document.querySelector('#contact-form');
 if (form) {
   const status = form.querySelector('.form-status');
   const button = form.querySelector('button[type="submit"]');
-
-  const show = (type, msg) => {
-    status.className = `form-status ${type}`;
-    status.textContent = msg;
-  };
+  const show = (type, msg) => { status.className = `form-status ${type}`; status.textContent = msg; };
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -92,22 +131,18 @@ if (form) {
     }
 
     button.disabled = true;
-    const label = button.textContent;
+    const label = button.innerHTML;
     button.textContent = 'Sending…';
     try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      });
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       form.reset();
-      show('success', "Thanks! Your message is on its way. We'll get back to you within one business day.");
-    } catch (err) {
-      show('error', 'Something went wrong sending your message. Please try again or email us directly.');
+      show('success', "Thanks! Your request is on its way. We'll be in touch within one business day.");
+    } catch {
+      show('error', 'Something went wrong sending your request. Please call 630-699-8897 or email hello@elevareit.net.');
     } finally {
       button.disabled = false;
-      button.textContent = label;
+      button.innerHTML = label;
     }
   });
 }
